@@ -26,7 +26,7 @@ APPLE_COLOR = (255, 0, 0)
 SNAKE_COLOR = (0, 255, 0)
 
 # Скорость движения змейки:
-SPEED = 7  
+SPEED = 10  # Изменена скорость
 
 # Настройка игрового окна:
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)
@@ -36,6 +36,7 @@ pygame.display.set_caption('Змейка')
 
 # Настройка времени:
 clock = pygame.time.Clock()
+
 
 class GameObject:
     """Базовый класс для игровых объектов."""
@@ -56,6 +57,7 @@ class GameObject:
         """
         pass
 
+
 class Apple(GameObject):
     """Класс для яблока."""
 
@@ -75,6 +77,7 @@ class Apple(GameObject):
         rect = pygame.Rect(self.position, (GRID_SIZE, GRID_SIZE))
         pygame.draw.rect(screen, self.body_color, rect)
         pygame.draw.rect(screen, BORDER_COLOR, rect, 1)
+
 
 class Snake(GameObject):
     """Класс для змейки."""
@@ -153,6 +156,7 @@ class Snake(GameObject):
         self.next_direction = None
         self.last = None
 
+
 def handle_keys(game_object):
     """Обрабатывает нажатия клавиш."""
     for event in pygame.event.get():
@@ -175,6 +179,7 @@ def handle_keys(game_object):
             elif (event.key == pygame.K_RIGHT
                     and game_object.direction != 'LEFT'):
                 game_object.next_direction = 'RIGHT'
+
 
 def main():
     """
@@ -206,6 +211,7 @@ def main():
         pygame.display.update()
 
         clock.tick(SPEED)
+
 
 if __name__ == '__main__':
     main()
